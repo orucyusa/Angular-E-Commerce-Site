@@ -1,9 +1,9 @@
-<h3 *ngIf="products; else noProduct">{{title}}</h3>
+<h3 *ngIf="products; else noProduct">{{title}} </h3>
 
 <div class="mb-3">
     <input class="form-control" id="productName" placeholder="Arama metninizi giriniz."
     [(ngModel)]="filterText">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <small *ngIf="filterText" class="form-text">Şu an <strong> {{filterText}} </strong> aradınız</small>
 </div>
 
 <div class="row">
@@ -18,6 +18,6 @@
             <h5 class="card-title">{{product.name | uppercase}} </h5>
             <p class="card-text"> {{product.description}}</p>
             <p class="card-price"> {{product.price | currency:'USD':'symbol':"1.2-2"}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a (click)="addToCart(product)" class="btn btn-primary">Sepete ekle</a>
         </div>
     </div>
